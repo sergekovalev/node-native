@@ -1,0 +1,37 @@
+Arguments: 
+  /data/data/com.termux/files/usr/bin/node /data/data/com.termux/files/usr/share/yarn/bin/yarn.js
+
+PATH: 
+  /data/data/com.termux/files/usr/bin
+
+Yarn version: 
+  1.22.17
+
+Node version: 
+  17.5.0
+
+Platform: 
+  android arm64
+
+Trace: 
+  Error: EACCES: permission denied, symlink '../acorn/bin/acorn' -> '/storage/emulated/0/Projects/node-native/node_modules/.bin/acorn'
+
+npm manifest: 
+  {
+    "name": "node-native",
+    "version": "1.0.0",
+    "main": "index.js",
+    "license": "MIT",
+    "scripts": {
+      "build": "rm -rf __dist__ && node src/index samples/code.js"
+    },
+    "dependencies": {
+      "acorn": "^8.7.0"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

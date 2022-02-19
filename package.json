@@ -4,10 +4,9 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "build": "rimraf __dist__ && node src/index samples/code.js"
+    "build": "rm -rf __dist__ && node src/index samples/code.js"
   },
   "dependencies": {
-    "acorn": "^8.7.0",
-    "rimraf": "^3.0.2"
+    "acorn": "^8.7.0"
   }
 }

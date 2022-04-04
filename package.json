@@ -4,9 +4,15 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "build": "rm -rf __dist__ && node src/index samples/code.js"
+    "build": "rm -rf __dist__ && npx tsc && node build/index samples/code.js"
   },
   "dependencies": {
     "acorn": "^8.7.0"
+  },
+  "devDependencies": {
+    "@types/node": "^16.9.4",
+    "@typescript-eslint/eslint-plugin": "^4.6.1",
+    "@typescript-eslint/parser": "^4.6.1",
+    "typescript": "^4.0.5"
   }
 }

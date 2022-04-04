@@ -1,7 +1,7 @@
-const pairs = require('./pairs')
+import pairs from './pairs';
 
 const mapToken = (ch) => {
-  token = pairs[ch] || null
+  const token = pairs[ch] || null
   
   if(token) {
     if(typeof token === 'object' && (token['before'] || token['after'])) {
@@ -14,7 +14,7 @@ const mapToken = (ch) => {
   return [ch];
 }
 
-function tokenize(code) {
+export default function tokenize(code) {
   let tokens = [];
 
   code.forEach(token => {
@@ -23,7 +23,3 @@ function tokenize(code) {
 
   return tokens;
 }
-
-module.exports = {
-  tokenize
-};

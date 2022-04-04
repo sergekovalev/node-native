@@ -1,7 +1,7 @@
-const tokenizer = require('../../helpers/tokenizer');
-const collect = require('../../helpers/collect');
+import tokenizer from '../../helpers/tokenizer';
+import { includes } from '../../helpers/collect';
 
-const MAIN_FUNC_TEMPLATE = require('./templates/main_func');
+import MAIN_FUNC_TEMPLATE from './templates/main_func';
 
 const struct = {
   'main.cpp': ''
@@ -21,7 +21,7 @@ function convert(ast) {
   struct['main.cpp'] = tokenizer(
     MAIN_FUNC_TEMPLATE,
     {
-      includes: collect.includes(includesList),
+      includes: includes(includesList),
       mainContent
     }
   );
@@ -29,4 +29,4 @@ function convert(ast) {
   return struct;
 }
 
-module.exports = convert;
+export default convert;

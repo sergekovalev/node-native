@@ -1,4 +1,4 @@
-module.exports = `
+export default `
 {{ includes }}
 
 int main(int argc, char *argv[])

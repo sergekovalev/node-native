@@ -1,22 +1,22 @@
-const tokenizer = require('./tokenizer');
+import tokenizer from './tokenizer';
 
-concatPairs = [
-  ['='.charCodeAt(), '='.charCodeAt()],
-  ['>'.charCodeAt(), '='.charCodeAt()],
-  ['<'.charCodeAt(), '='.charCodeAt()],
-  ['-'.charCodeAt(), '>'.charCodeAt()]
+const concatPairs = [
+  ['='.charCodeAt(0), '='.charCodeAt(0)],
+  ['>'.charCodeAt(0), '='.charCodeAt(0)],
+  ['<'.charCodeAt(0), '='.charCodeAt(0)],
+  ['-'.charCodeAt(0), '>'.charCodeAt(0)]
 ]
 
 const CHAR_CODES = {
-  NEW_LINE: '\n'.charCodeAt(),
-  SPACE: ' '.charCodeAt(),
-  SEMICOLON: ';'.charCodeAt(),
-  A: 'A'.charCodeAt(),
-  Z: 'Z'.charCodeAt(),
-  a: 'a'.charCodeAt(),
-  z: 'z'.charCodeAt(),
-  0: '0'.charCodeAt(),
-  9: '9'.charCodeAt(),
+  NEW_LINE: '\n'.charCodeAt(0),
+  SPACE: ' '.charCodeAt(0),
+  SEMICOLON: ';'.charCodeAt(0),
+  A: 'A'.charCodeAt(0),
+  Z: 'Z'.charCodeAt(0),
+  a: 'a'.charCodeAt(0),
+  z: 'z'.charCodeAt(0),
+  0: '0'.charCodeAt(0),
+  9: '9'.charCodeAt(0),
 }
 
 const parsedCode = [];
@@ -37,9 +37,9 @@ const isSign = (charCode) => {
 const isNumber = (charCode) => charCode >= CHAR_CODES['0'] &&  charCode <= CHAR_CODES['9']
 
 const canConcat = (charCode, previousCharCode) => {
-  for(pair of concatPairs) {
+  for(let pair of concatPairs) {
     if(pair[0] == previousCharCode && pair[1] == charCode) {
-      return True
+      return true;
     }
   }
   
@@ -62,10 +62,11 @@ const getParsedCode = (code) => {
   let previousCharCode = null;
   let linesCount = 0;
   let ch = null;
+  let charCode;
 
   for(let i = 0; i < code.length; i++) {
     ch = code[i];
-    charCode = ch.charCodeAt();
+    charCode = ch.charCodeAt(0);
     
     if(isSign(charCode) && !isNumber(charCode)) {
       push(word, charCode, previousCharCode);
@@ -100,17 +101,13 @@ const getParsedCode = (code) => {
   }
 }
 
-function parse(code) {
+export default function parse(code) {
   const parsedCode = getParsedCode(code);
   
-  const tokenizedCode = tokenizer.tokenize(parsedCode.code);
+  const tokenizedCode = tokenizer(parsedCode.code);
 
   return {
     ...parsedCode,
     tokens: tokenizedCode,
   }
 }
-
-module.exports = {
-  parse
-};

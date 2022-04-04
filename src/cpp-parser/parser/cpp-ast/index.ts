@@ -1,8 +1,12 @@
-const TOKENS = require('../tokens');
+import TOKENS from '../tokens';
 
 const switchLiteralType = (raw) => {
 	if(/^\d+$/.test(raw)) {
 		return TOKENS.INTEGER;
+	} else if(/^\d*\.\d+$/.test(raw)) {
+		return TOKENS.FLOAT;
+	} else if(/^(true)|(false)$/.test(raw)) {
+		return TOKENS.BOOLEAN;
 	}
 	
 	return TOKENS.UNDEFINED;
@@ -26,11 +30,7 @@ const migrate = (tree) => {
 	}
 }
 
-const make = (tree) => {
+export default function make(tree) {
   migrate(tree);
   return tree;
 }
-
-module.exports = {
-  make
-};

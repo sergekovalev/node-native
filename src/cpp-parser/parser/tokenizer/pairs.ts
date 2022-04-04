@@ -1,12 +1,12 @@
-const TOKENS = require('../tokens');
+import TOKENS from '../tokens';
 
-module.exports = {
+export default {
   'const': [TOKENS.CONSTANT_DECLARATION],
   'let': [TOKENS.VARIABLE_DECLARATION],
   'var': [TOKENS.VARIABLE_DECLARATION],
   'number': [TOKENS.TYPE_DECLARATION, TOKENS.NUMBER],
   'string': [TOKENS.TYPE_DECLARATION, TOKENS.STRING],
-  'import': [TOKENS.IMPORT],
+  'import': [TOKENS.IMPORT_MODULE],
   'def': [TOKENS.FUNCTION_DECLARATION],
   '=': [TOKENS.EQ],
   '==': [TOKENS.IS_EQ],
